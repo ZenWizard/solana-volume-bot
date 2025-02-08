@@ -1,5 +1,9 @@
 import { PublicKey, Connection, Keypair } from '@solana/web3.js';
 import bs58 from 'bs58';
+import dotenv from "dotenv";
+dotenv.config()
+
+const walletKey = JSON.parse(process.env.WALLET_KEY || "[]");
 
 export const rayFee = new PublicKey('7YttLkHDoNj9wyDur5pM1ejNaAvT9X4eqaYcHQqtj2G5');
 export const tipAcct = new PublicKey('Cw8CFyM9FkoMi7K7Crf6HNQqf4uEMzpKw6QNghXLvLkY');
@@ -9,6 +13,7 @@ export const connection = new Connection('', { // RPC URL HERE
   commitment: 'confirmed',
 });
 
+export { walletKey };
 export const wallet = Keypair.fromSecretKey(
   bs58.decode(
     '' // PRIV KEY OF SOL SENDER
